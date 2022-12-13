@@ -31,6 +31,14 @@ export class UserManagementService {
     );
   }
 
+  deleteUserById(userId: number): Observable<User> {
+    return this.httpClient.delete<User>(`${this.apiUrl}${userId}`, {
+      headers: {'Authorization':'Bearer ' + this.configService.getToken()}
+    }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   createNewUser(firstName: string, lastName: string, username: string, password: string, roles: String[]): Observable<ResponseCreateUser> {
     return this.httpClient.post<ResponseCreateUser>(`${this.apiUrl}`,{
       username: username,

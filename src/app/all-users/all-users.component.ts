@@ -24,4 +24,11 @@ export class AllUsersComponent implements OnInit {
     })
   }
 
+  deleteUser(user: User){
+    this.userManagementService.deleteUserById(user.userId).subscribe((response)=>{
+      // console.log(this.users[0].username + ": users")
+      this.getAllUsers()
+    })
+  }
+
 }
