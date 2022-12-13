@@ -3,23 +3,62 @@ import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {ConfigService} from "./config.service";
 import {catchError, Observable, throwError} from "rxjs";
 import {environment} from "../../environments/environment";
-import {ResponseAllUsers, ResponseLogin} from "../model";
+import {CreateUser, ResponseAllUsers, ResponseCreateUser, ResponseLogin, User} from "../model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserManagementService {
 
-  private readonly apiUrl = environment.userManagementApi + 'all'
+  private readonly apiUrl = environment.userManagementApi
   private readonly loginUrl = 'http://localhost:8080/auth/login'
 
   constructor(private httpClient: HttpClient, private configService: ConfigService) { }
 
   getAllUsers(): Observable<ResponseAllUsers> {
-    return this.httpClient.get<ResponseAllUsers>(`${this.apiUrl}`, {
+    return this.httpClient.get<ResponseAllUsers>(`${this.apiUrl + 'all'}`, {
       headers: {'Authorization':'Bearer ' + this.configService.getToken()}
-    });
+    }).pipe(
+      catchError(this.handleError)
+    );
   }
+
+  getUserById(userId: number): Observable<User> {
+    return this.httpClient.get<User>(`${this.apiUrl}${userId}`, {
+      headers: {'Authorization':'Bearer ' + this.configService.getToken()}
+    }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  createNewUser(firstName: string, lastName: string, username: string, password: string, roles: String[]): Observable<ResponseCreateUser> {
+    return this.httpClient.post<ResponseCreateUser>(`${this.apiUrl}`,{
+      username: username,
+      firstName:firstName,
+      lastName:lastName,
+      password: password,
+      roles: roles
+    }, {
+      headers: {'Authorization':'Bearer ' + this.configService.getToken()},
+    }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  updateUser(userId:number, firstName: string, lastName: string, username: string, roles: String[]): Observable<ResponseCreateUser> {
+    return this.httpClient.put<ResponseCreateUser>(`${this.apiUrl}`,{
+      userId: userId,
+      username: username,
+      firstName:firstName,
+      lastName:lastName,
+      roles: roles
+    }, {
+      headers: {'Authorization':'Bearer ' + this.configService.getToken()},
+    }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
 
   login(email: string, password: string): Observable<ResponseLogin> {
     return this.httpClient.post<ResponseLogin>(this.loginUrl, {
@@ -43,6 +82,7 @@ export class UserManagementService {
         `Backend returned code ${error.status}, body was: `, error.error);
     }
     // Return an observable with a user-facing error message.
+    alert("Desila se greska")
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 }

@@ -20,8 +20,7 @@ export class AllUsersComponent implements OnInit {
   getAllUsers(): void{
     this.userManagementService.getAllUsers().subscribe((response)=>{
       this.users = response.users
-      // console.log(response)
-      // console.log(this.users[].username)
+      // console.log(this.users[0].username + ": users")
     })
   }
 

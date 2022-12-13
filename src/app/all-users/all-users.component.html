@@ -1,1 +1,21 @@
-<p>all-users works!</p>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Name</th>
+    <th scope="col">Last name</th>
+    <th scope="col">Email</th>
+    <th scope="col">Permissions</th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <tr *ngFor="let user of users; index as i" [routerLink]="['/editUser', user.userId]">
+    <th scope="row">{{ i + 1 }}</th>
+    <td>{{ user.firstName }}</td>
+    <td>{{ user.lastName }}</td>
+    <td>{{ user.username }}</td>
+    <td>{{ user.roles }}</td>
+  </tr>
+  </tbody>
+</table>
