@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UserManagementService} from "../services/user-management.service";
-import {CreateUser} from "../model";
-import {AlertComponent, AlertConfig} from "ngx-bootstrap/alert";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-create-new-user',
@@ -20,7 +19,7 @@ export class CreateNewUserComponent implements OnInit {
   can_update_users: boolean;
   can_delete_users: boolean;
 
-  constructor(private userManagementService: UserManagementService) {
+  constructor(private userManagementService: UserManagementService, private router: Router) {
     this.firstName = '';
     this.lastName = '';
     this.password = '';
@@ -59,6 +58,7 @@ export class CreateNewUserComponent implements OnInit {
     this.userManagementService.createNewUser(this.firstName, this.lastName, this.username,this.password,this.roles)
       .subscribe((response) => {
       // alert(response)
-    })
+        this.router.navigate(['/users']);
+      })
   }
 }

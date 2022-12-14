@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserManagementService} from "../services/user-management.service";
 import {ResponseAllUsers, User} from "../model";
+import {ConfigService} from "../services/config.service";
 
 @Component({
   selector: 'app-all-users',
@@ -11,7 +12,7 @@ export class AllUsersComponent implements OnInit {
 
   users: User[] = [];
 
-  constructor(private userManagementService: UserManagementService) { }
+  constructor(private userManagementService: UserManagementService, public configService: ConfigService) { }
 
   ngOnInit(): void {
     this.getAllUsers()
@@ -21,6 +22,8 @@ export class AllUsersComponent implements OnInit {
     this.userManagementService.getAllUsers().subscribe((response)=>{
       this.users = response.users
       // console.log(this.users[0].username + ": users")
+    }, error => {
+      alert(error)
     })
   }
 
@@ -28,6 +31,8 @@ export class AllUsersComponent implements OnInit {
     this.userManagementService.deleteUserById(user.userId).subscribe((response)=>{
       // console.log(this.users[0].username + ": users")
       this.getAllUsers()
+    },error => {
+
     })
   }
 

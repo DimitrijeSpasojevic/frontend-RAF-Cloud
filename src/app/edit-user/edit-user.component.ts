@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {UserManagementService} from "../services/user-management.service";
 
 @Component({
@@ -19,7 +19,7 @@ export class EditUserComponent implements OnInit {
   can_update_users: boolean;
   can_delete_users: boolean;
 
-  constructor(private route: ActivatedRoute, private userManagementService: UserManagementService) {
+  constructor(private route: ActivatedRoute, private userManagementService: UserManagementService, private router: Router) {
     this.firstName = '';
     this.lastName = '';
     this.username = '';
@@ -67,6 +67,7 @@ export class EditUserComponent implements OnInit {
     this.userManagementService.updateUser(this.userId,this.firstName, this.lastName, this.username,this.roles)
       .subscribe((response) => {
         // alert(response)
+        this.router.navigate(['/users']);
       })
   }
 }

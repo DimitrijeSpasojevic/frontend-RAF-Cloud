@@ -4,11 +4,15 @@ import {AllUsersComponent} from "./all-users/all-users.component";
 import {LoginComponent} from "./login/login.component";
 import {CreateNewUserComponent} from "./create-new-user/create-new-user.component";
 import {EditUserComponent} from "./edit-user/edit-user.component";
+import {ReadAuthGuard} from "./read-auth.guard";
+import {CreateAuthGuard} from "./create-auth.guard";
+import {UpdateAuthGuard} from "./update-auth.guard";
 
 const routes: Routes = [
   {
     path: "users",
-    component: AllUsersComponent
+    component: AllUsersComponent,
+    canActivate: [ReadAuthGuard]
   },
   {
     path: "login",
@@ -16,11 +20,13 @@ const routes: Routes = [
   },
   {
     path: "createUser",
-    component: CreateNewUserComponent
+    component: CreateNewUserComponent,
+    canActivate: [CreateAuthGuard]
   },
   {
     path: "editUser/:userId",
-    component: EditUserComponent
+    component: EditUserComponent,
+    canActivate: [UpdateAuthGuard]
   },
 ];
 

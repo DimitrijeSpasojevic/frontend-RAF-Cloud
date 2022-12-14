@@ -17,7 +17,8 @@
     <td [routerLink]="['/editUser', user.userId]">{{ user.username }}</td>
     <td>{{ user.roles }}</td>
     <td>
-      <button (click)="deleteUser(user)" type="button" class="btn btn-danger">Delete</button>
+      <button (click)="deleteUser(user)" type="button" class="btn btn-danger"
+              [style.visibility]="configService.canUserDelete() ? 'visible' : 'hidden'">Delete</button>
     </td>
   </tr>
   </tbody>

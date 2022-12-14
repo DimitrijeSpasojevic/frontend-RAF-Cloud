@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {ConfigService} from "./config.service";
 import {catchError, Observable, throwError} from "rxjs";
 import {environment} from "../../environments/environment";
-import {CreateUser, ResponseAllUsers, ResponseCreateUser, ResponseLogin, User} from "../model";
+import { ResponseAllUsers, ResponseCreateUser, ResponseLogin, User} from "../model";
 
 @Injectable({
   providedIn: 'root'
@@ -78,7 +78,6 @@ export class UserManagementService {
   }
 
   private handleError(error: HttpErrorResponse) {
-    console.log("KKKKKKKKKKKKKKKKKKKKKKKKK")
 
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.
@@ -90,7 +89,6 @@ export class UserManagementService {
         `Backend returned code ${error.status}, body was: `, error.error);
     }
     // Return an observable with a user-facing error message.
-    alert("Desila se greska")
-    return throwError(() => new Error('Something bad happened; please try again later.'));
+    return throwError(() => new Error(error.error));
   }
 }
