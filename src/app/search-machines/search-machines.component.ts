@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {MachineManagementService} from "../services/machine-management.service";
+import {ConfigService} from "../services/config.service";
+import {Machine, User} from "../model";
 
 @Component({
   selector: 'app-search-machines',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchMachinesComponent implements OnInit {
 
-  constructor() { }
+  machines: Machine[] = [];
+
+  constructor(private machineManagementService: MachineManagementService, public configService: ConfigService) { }
 
   ngOnInit(): void {
+    this.getAllMachinesForLoggedUser()
   }
 
+
+  getAllMachinesForLoggedUser(): void{
+    this.machineManagementService.getAllMachines().subscribe((response)=>{
+      this.machines = response
+    }, error => {
+      alert(error)
+    })
+  }
 }

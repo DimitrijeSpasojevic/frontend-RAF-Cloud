@@ -7,6 +7,9 @@
           <a [routerLink]="'/login'" class="nav-link active" aria-current="page">Login</a>
           <a [routerLink]="'/users'" class="nav-link active" aria-current="page">Users</a>
           <a [routerLink]="'/createUser'" class="nav-link active" aria-current="page"  [style.visibility]="configService.canUserCreate() ? 'visible' : 'hidden'">Create new user</a>
+          <a [routerLink]="'/search'" class="nav-link active" aria-current="page">Search machines</a>
+          <a [routerLink]="'/createMachine'" class="nav-link active" aria-current="page">Create machine</a>
+          <a [routerLink]="'/errors'" class="nav-link active" aria-current="page">Errors</a>
         </div>
 
       </div>

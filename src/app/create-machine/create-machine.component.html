@@ -1,1 +1,14 @@
-<p>create-machine works!</p>
+<div>
+  <h3>Create new machine</h3>
+
+  <div>
+    <form (submit)="createMachine()" class="mb-5 was-validated">
+      <div class="form-group mb-2">
+        <label for="name">Name of machine</label>
+        <input  type="text" class="form-control" id="name" name="name" placeholder="name" [(ngModel)]="name" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Create machine</button>
+    </form>
+  </div>
+</div>

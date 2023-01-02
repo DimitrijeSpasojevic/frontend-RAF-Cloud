@@ -1,1 +1,33 @@
-<p>search-machines works!</p>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Id</th>
+    <th scope="col">Name</th>
+    <th scope="col">Status</th>
+    <th scope="col">CreatedBy</th>
+    <th scope="col">Active</th>
+    <th scope="col">Creation date</th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <tr *ngFor="let machine of machines; index as i">
+    <th scope="row">{{ i + 1 }}</th>
+    <td>{{ machine.id }}</td>
+    <td>{{ machine.name }}</td>
+    <td>{{ machine.status }}</td>
+    <td>{{ machine.createdBy.username }}</td>
+    <td>{{ machine.active }}</td>
+    <td>{{ machine.creationDate }}</td>
+
+<!--    <td [routerLink]="['/editUser', user.userId]">{{ user.username }}</td>-->
+<!--    <td>{{ user.roles }}</td>-->
+<!--    <td>-->
+<!--      <button (click)="deleteUser(user)" type="button" class="btn btn-danger"-->
+<!--              [style.visibility]="configService.canUserDelete() ? 'visible' : 'hidden'">Delete</button>-->
+<!--    </td>-->
+  </tr>
+  </tbody>
+</table>
+
