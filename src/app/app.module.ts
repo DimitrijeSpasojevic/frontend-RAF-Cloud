@@ -10,6 +10,9 @@ import {FormsModule} from "@angular/forms";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreateNewUserComponent } from './create-new-user/create-new-user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { SearchMachinesComponent } from './search-machines/search-machines.component';
+import { ErrorsComponent } from './errors/errors.component';
+import { CreateMachineComponent } from './create-machine/create-machine.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     AllUsersComponent,
     LoginComponent,
     CreateNewUserComponent,
-    EditUserComponent
+    EditUserComponent,
+    SearchMachinesComponent,
+    ErrorsComponent,
+    CreateMachineComponent
   ],
   imports: [
     BrowserModule,
