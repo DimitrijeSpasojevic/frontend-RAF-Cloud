@@ -31,6 +31,36 @@
           <label class="form-check-label" for="can_delete_users">can_delete_users</label>
         </div>
 
+        <div class="form-check">
+          <input [(ngModel)]="can_create_machines" class="form-check-input" type="checkbox" name="can_create_machines" id="can_create_machines" value="can_create_machines">
+          <label class="form-check-label" for="can_create_machines">can_create_machines</label>
+        </div>
+
+        <div class="form-check">
+          <input [(ngModel)]="can_start_machines" class="form-check-input" type="checkbox" name="can_start_machines" id="can_start_machines" value="can_start_machines">
+          <label class="form-check-label" for="can_start_machines">can_start_machines</label>
+        </div>
+
+        <div class="form-check">
+          <input [(ngModel)]="can_stop_machines" class="form-check-input" type="checkbox" name="can_stop_machines" id="can_stop_machines" value="can_stop_machines">
+          <label class="form-check-label" for="can_stop_machines">can_stop_machines</label>
+        </div>
+
+        <div class="form-check">
+          <input [(ngModel)]="can_restart_machines" class="form-check-input" type="checkbox" name="can_restart_machines" id="can_restart_machines" value="can_restart_machines">
+          <label class="form-check-label" for="can_restart_machines">can_restart_machines</label>
+        </div>
+
+        <div class="form-check">
+          <input [(ngModel)]="can_destroy_machines" class="form-check-input" type="checkbox" name="can_destroy_machines" id="can_destroy_machines" value="can_destroy_machines">
+          <label class="form-check-label" for="can_destroy_machines">can_destroy_machines</label>
+        </div>
+
+        <div class="form-check">
+          <input [(ngModel)]="can_search_machines" class="form-check-input" type="checkbox" name="can_search_machines" id="can_search_machines" value="can_search_machines">
+          <label class="form-check-label" for="can_search_machines">can_search_machines</label>
+        </div>
+
       </div>
 
       <button type="submit" class="btn btn-primary">Create user</button>

@@ -10,6 +10,7 @@ import {UpdateAuthGuard} from "./update-auth.guard";
 import {SearchMachinesComponent} from "./search-machines/search-machines.component";
 import {CreateMachineComponent} from "./create-machine/create-machine.component";
 import {ErrorsComponent} from "./errors/errors.component";
+import {MachineActionComponent} from "./machine-action/machine-action.component";
 
 const routes: Routes = [
   {
@@ -42,6 +43,10 @@ const routes: Routes = [
   {
     path: "errors",
     component: ErrorsComponent
+  },
+  {
+    path: "machineAction",
+    component: MachineActionComponent
   },
 ];
 

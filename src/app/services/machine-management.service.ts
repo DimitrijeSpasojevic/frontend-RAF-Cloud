@@ -32,6 +32,16 @@ export class MachineManagementService {
     );
   }
 
+  startMachine(machineId: number): Observable<string> {
+    return this.httpClient.put<string>(`${this.apiUrl + '/start/' + machineId}`, {
+
+    },{
+      headers: {'Authorization':'Bearer ' + this.configService.getToken()}
+    }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   private handleError(error: HttpErrorResponse) {
 
     if (error.status === 0) {

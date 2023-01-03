@@ -31,6 +31,11 @@ export interface ResponseAllUsers {
   users: User[]
 }
 
+export interface Message {
+  from: string;
+  text: string
+}
+
 export interface ResponseAllMachines {
   machines: Machine[]
 }

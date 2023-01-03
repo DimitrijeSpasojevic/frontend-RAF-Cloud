@@ -13,6 +13,7 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { SearchMachinesComponent } from './search-machines/search-machines.component';
 import { ErrorsComponent } from './errors/errors.component';
 import { CreateMachineComponent } from './create-machine/create-machine.component';
+import { MachineActionComponent } from './machine-action/machine-action.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CreateMachineComponent } from './create-machine/create-machine.componen
     EditUserComponent,
     SearchMachinesComponent,
     ErrorsComponent,
-    CreateMachineComponent
+    CreateMachineComponent,
+    MachineActionComponent
   ],
   imports: [
     BrowserModule,

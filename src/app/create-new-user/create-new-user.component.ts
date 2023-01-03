@@ -19,6 +19,15 @@ export class CreateNewUserComponent implements OnInit {
   can_update_users: boolean;
   can_delete_users: boolean;
 
+  can_search_machines: boolean = false;
+  can_create_machines: boolean = false;
+  can_start_machines: boolean = false;
+  can_destroy_machines: boolean = false;
+  can_stop_machines: boolean = false;
+  can_restart_machines: boolean = false;
+
+
+
   constructor(private userManagementService: UserManagementService, private router: Router) {
     this.firstName = '';
     this.lastName = '';
@@ -52,6 +61,26 @@ export class CreateNewUserComponent implements OnInit {
     if(this.can_update_users){
       this.roles.push("can_update_users")
     }
+
+    if(this.can_create_machines){
+      this.roles.push("can_create_machines")
+    }
+    if(this.can_start_machines){
+      this.roles.push("can_start_machines")
+    }
+    if(this.can_stop_machines){
+      this.roles.push("can_stop_machines")
+    }
+    if(this.can_restart_machines){
+      this.roles.push("can_restart_machines")
+    }
+    if(this.can_search_machines){
+      this.roles.push("can_search_machines")
+    }
+    if(this.can_destroy_machines){
+      this.roles.push("can_destroy_machines")
+    }
+
     if(!this.can_update_users && !this.can_delete_users && !this.can_read_users && !this.can_create_users){
       alert("User bez rola")
     }
