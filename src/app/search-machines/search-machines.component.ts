@@ -25,7 +25,7 @@ export class SearchMachinesComponent implements OnInit {
   userId: number = 0
 
   constructor(private machineManagementService: MachineManagementService, public configService: ConfigService) {
-
+    this.connect();
   }
 
   ngOnInit(): void {
@@ -42,33 +42,31 @@ export class SearchMachinesComponent implements OnInit {
   }
 
   startMachine(machine: Machine):void{
-    this.action = "start";
     this.machineId = machine.id
-    if(this.isConnected == false){
-      this.connect();
-    }else{
-      this.start();
-    }
-
+    this.machineManagementService.startMachine(this.machineId).subscribe((response) => {
+      alert("Zapocet proces startovanje, sacekajte.")
+    }, error => {
+      // this.disconnect()
+    })
   }
   restartMachine(machine:Machine):void{
     this.action = "restart";
     this.machineId = machine.id
-    if(this.isConnected == false){
-      this.connect();
-    }else {
-      this.restart();
-    }
+    this.machineManagementService.restartMachine(this.machineId).subscribe((response) => {
+      alert("Zapocet proces restartovanje, sacekajte.")
+    }, error => {
+      // this.disconnect()
+    })
   }
 
   stopMachine(machine:Machine):void{
     this.action = "stop";
     this.machineId = machine.id
-    if(this.isConnected == false){
-      this.connect();
-    }else {
-        this.stop();
-    }
+    this.machineManagementService.stopMachine(this.machineId).subscribe((response) => {
+      alert("Zapocet proces stop, sacekajte.")
+    }, error => {
+      // this.disconnect()
+    })
   }
 
   destroyMachine(machine:Machine):void{
@@ -96,14 +94,6 @@ export class SearchMachinesComponent implements OnInit {
     this.stompClient.subscribe('/topic/messages/' + this.userId, this.addNewMessage.bind(this));
     this.isConnected = true;
     console.log('Connected: ---------> ' + frame);
-
-    if(this.action == "start"){
-        this.start();
-    }else if(this.action == "stop"){
-        this.stop();
-    }else if(this.action == "restart"){
-        this.restart();
-    }
   }
 
   addNewMessage(messageOutput: any) {
@@ -114,35 +104,11 @@ export class SearchMachinesComponent implements OnInit {
       // this.disconnect()
     }
   }
-
   disconnect() {
     if(this.stompClient != null) {
       this.stompClient.disconnect();
     }
     this.isConnected = false;
     console.log("Disconnected");
-  }
-
-  start(){
-    this.machineManagementService.startMachine(this.machineId).subscribe((response) => {
-      alert("Zapocet proces startovanje, sacekajte.")
-    }, error => {
-      // this.disconnect()
-    })
-  }
-  stop(){
-    this.machineManagementService.stopMachine(this.machineId).subscribe((response) => {
-      alert("Zapocet proces stop, sacekajte.")
-    }, error => {
-      // this.disconnect()
-    })
-  }
-
-  restart(){
-    this.machineManagementService.restartMachine(this.machineId).subscribe((response) => {
-      alert("Zapocet proces restartovanje, sacekajte.")
-    }, error => {
-      // this.disconnect()
-    })
   }
 }
