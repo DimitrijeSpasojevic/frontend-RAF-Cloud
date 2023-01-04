@@ -42,6 +42,37 @@ export class MachineManagementService {
     );
   }
 
+  restartMachine(machineId: number): Observable<string> {
+    return this.httpClient.put<string>(`${this.apiUrl + '/restart/' + machineId}`, {
+
+    },{
+      headers: {'Authorization':'Bearer ' + this.configService.getToken()}
+    }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  stopMachine(machineId: number): Observable<string> {
+    return this.httpClient.put<string>(`${this.apiUrl + '/stop/' + machineId}`, {
+
+    },{
+      headers: {'Authorization':'Bearer ' + this.configService.getToken()}
+    }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  destroyMachine(machineId: number): Observable<string> {
+    return this.httpClient.put<string>(`${this.apiUrl + '/destroy/' + machineId}`, {
+
+    },{
+      headers: {'Authorization':'Bearer ' + this.configService.getToken()}
+    }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+
   private handleError(error: HttpErrorResponse) {
 
     if (error.status === 0) {
