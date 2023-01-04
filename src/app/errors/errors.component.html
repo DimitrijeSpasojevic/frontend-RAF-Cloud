@@ -1,1 +1,7 @@
-<p>errors works!</p>
+<div>
+  <p>Errors</p>
+
+  <div *ngFor="let myError of myErrors" style="margin-bottom: 5px; word-wrap: break-word">
+    <strong>Error: {{myError.errorText}}</strong>, machine id: {{myError.machineId}}
+  </div>
+</div>

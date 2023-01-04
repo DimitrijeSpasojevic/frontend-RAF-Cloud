@@ -28,8 +28,18 @@
       <td>{{ machine.creationDate }}</td>
 
       <td>
-        <button (click)="startMachine(machine)" type="button" class="btn btn-danger">Start machine</button>
+        <button (click)="startMachine(machine)" type="button" class="btn btn-light">Start</button>
       </td>
+      <td>
+        <button (click)="stopMachine(machine)" type="button" class="btn btn-outline-dark">Stop</button>
+      </td>
+      <td>
+        <button (click)="restartMachine(machine)" type="button" class="btn btn-outline-dark">Restart</button>
+      </td>
+      <td>
+        <button (click)="destroyMachine(machine)" type="button" class="btn btn-danger">Destroy</button>
+      </td>
+
 
       <!--    <td [routerLink]="['/editUser', user.userId]">{{ user.username }}</td>-->
       <!--    <td>{{ user.roles }}</td>-->

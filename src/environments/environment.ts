@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   userManagementApi: 'http://localhost:8080/api/users/',
-  managementMachinesApi: 'http://localhost:8080/api/machines'
+  managementMachinesApi: 'http://localhost:8080/api/machines',
+  managementErrorApi: 'http://localhost:8080/api/errors'
 };
 
 /*

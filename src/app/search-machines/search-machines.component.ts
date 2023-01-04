@@ -27,8 +27,9 @@ export class SearchMachinesComponent implements OnInit {
     this.getAllMachinesForLoggedUser()
     this.messages = [];
   }
-
-
+  ngOnDestroy(): void{
+    this.disconnect();
+  }
   getAllMachinesForLoggedUser(): void{
     this.machineManagementService.getAllMachines().subscribe((response)=>{
       this.machines = response
@@ -46,7 +47,13 @@ export class SearchMachinesComponent implements OnInit {
       // this.disconnect()
     })
   }
-  restartMachine():void{
+  restartMachine(machine:Machine):void{
+
+  }
+  stopMachine(machine:Machine):void{
+
+  }
+  destroyMachine(machine:Machine):void{
 
   }
   connect() {
@@ -58,10 +65,10 @@ export class SearchMachinesComponent implements OnInit {
   onConnect(frame: any) {
     this.stompClient.subscribe('/topic/messages/' + this.machineId, this.addNewMessage.bind(this));
     this.isConnected = true;
-    console.log('Connected: ' + frame);
+    // console.log('Connected: ' + frame);
   }
   addNewMessage(messageOutput: any) {
-    console.log(JSON.parse(messageOutput.body))
+    // console.log(JSON.parse(messageOutput.body))
     this.messages.push(JSON.parse(messageOutput.body));
   }
 
@@ -70,6 +77,5 @@ export class SearchMachinesComponent implements OnInit {
       this.stompClient.disconnect();
     }
     this.isConnected = false;
-    console.log("Disconnected");
   }
 }

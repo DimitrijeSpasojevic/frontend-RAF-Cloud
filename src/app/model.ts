@@ -36,6 +36,17 @@ export interface Message {
   text: string
 }
 
+export interface MyError {
+  errorId: number,
+  errorText: string,
+  machineId: number,
+  userId: number
+}
+
+export interface ResponseMyErrors {
+  myErrors: MyError[]
+}
+
 export interface ResponseAllMachines {
   machines: Machine[]
 }
