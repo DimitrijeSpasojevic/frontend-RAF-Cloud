@@ -45,7 +45,7 @@ const routes: Routes = [
     component: ErrorsComponent
   },
   {
-    path: "machineAction",
+    path: "machineAction/:machineId",
     component: MachineActionComponent
   },
 ];

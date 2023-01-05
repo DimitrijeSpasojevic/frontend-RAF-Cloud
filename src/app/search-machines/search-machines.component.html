@@ -39,6 +39,9 @@
       <td>
         <button (click)="destroyMachine(machine)" type="button" class="btn btn-danger">Destroy</button>
       </td>
+      <td>
+        <button [routerLink]="['/machineAction', machine.id]" type="button" class="btn btn-info">Schedule Action</button>
+      </td>
 
 
       <!--    <td [routerLink]="['/editUser', user.userId]">{{ user.username }}</td>-->

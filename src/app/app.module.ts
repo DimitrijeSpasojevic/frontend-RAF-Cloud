@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app/app.component';
 import { AllUsersComponent } from './all-users/all-users.component';
@@ -27,13 +29,16 @@ import { MachineActionComponent } from './machine-action/machine-action.componen
     CreateMachineComponent,
     MachineActionComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    NgbModule,
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        NgbModule,
+        OwlDateTimeModule,
+        OwlNativeDateTimeModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

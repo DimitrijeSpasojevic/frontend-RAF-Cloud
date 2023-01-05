@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
+import {Machine} from "../model";
+import {OwlDateTime} from "ng-pick-datetime/date-time/date-time.class";
+import {MachineManagementService} from "../services/machine-management.service";
 
 @Component({
   selector: 'app-machine-action',
@@ -6,14 +10,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./machine-action.component.css']
 })
 export class MachineActionComponent implements OnInit {
-
-  constructor() { }
+  machineId: number = 0;
+  dateTime: any;
+  constructor(private route: ActivatedRoute, private  machineService:MachineManagementService) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => this.machineId = params["machineId"]);
+    console.log(this.machineId + " machine");
   }
 
-  start(): void{
+  scheduleAction(): void{
 
+    console.log(this.dateTime.getTime() + " dateTime")
   }
 
+  scheduleStart() {
+    this.machineService.scheduleStart(this.machineId, this.dateTime.getTime()).subscribe((response) => {
+      alert("Machine \"" + response + "\" is scheduledStarted")
+    });
+  }
+
+  scheduleStop() {
+    this.machineService.scheduleRestart(this.machineId, this.dateTime.getTime());
+  }
+
+  scheduleRestart() {
+    this.machineService.scheduleStop(this.machineId, this.dateTime.getTime());
+  }
 }

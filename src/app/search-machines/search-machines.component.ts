@@ -5,6 +5,7 @@ import {Machine, Message, User} from "../model";
 import * as SockJS from "sockjs-client";
 import {CompatClient, Stomp} from "@stomp/stompjs";
 import jwt_decode from "jwt-decode";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-search-machines',
@@ -24,7 +25,7 @@ export class SearchMachinesComponent implements OnInit {
   messages: Message[] = [];
   userId: number = 0
 
-  constructor(private machineManagementService: MachineManagementService, public configService: ConfigService) {
+  constructor(private machineManagementService: MachineManagementService, public configService: ConfigService,  private router: Router) {
     this.connect();
   }
 
