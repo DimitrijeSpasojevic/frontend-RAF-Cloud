@@ -26,15 +26,19 @@ export class MachineActionComponent implements OnInit {
 
   scheduleStart() {
     this.machineService.scheduleStart(this.machineId, this.dateTime.getTime()).subscribe((response) => {
-      alert("Machine \"" + response + "\" is scheduledStarted")
+      alert("Machine is scheduledStarted")
+    });
+  }
+
+  scheduleRestart() {
+    this.machineService.scheduleRestart(this.machineId, this.dateTime.getTime()).subscribe((response) => {
+      alert("Machine is scheduledRestart")
     });
   }
 
   scheduleStop() {
-    this.machineService.scheduleRestart(this.machineId, this.dateTime.getTime());
-  }
-
-  scheduleRestart() {
-    this.machineService.scheduleStop(this.machineId, this.dateTime.getTime());
+    this.machineService.scheduleStop(this.machineId, this.dateTime.getTime()).subscribe((response) => {
+      alert("Machine is scheduledStopped")
+    });
   }
 }

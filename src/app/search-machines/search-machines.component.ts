@@ -101,8 +101,8 @@ export class SearchMachinesComponent implements OnInit {
     console.log(JSON.parse(messageOutput.body))
     this.messages.push(JSON.parse(messageOutput.body));
     this.getAllMachinesForLoggedUser();
-    if(JSON.parse(messageOutput.body).text != "masina u pola faze restartovanja"){
-      // this.disconnect()
+    if(JSON.parse(messageOutput.body).text == "masina u pola faze restartovanja"){
+      this.getAllMachinesForLoggedUser()
     }
   }
   disconnect() {

@@ -21,7 +21,7 @@ export class ErrorsComponent implements OnInit {
 
   getMyErrors(): void{
     this.myErrorService.getAllErrorsByUser().subscribe((response) => {
-      this.myErrors = response.myErrors
+      this.myErrors = response.errorMessages
     })
   }
 }

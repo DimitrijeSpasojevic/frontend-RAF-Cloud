@@ -2,6 +2,7 @@
   <p>Errors</p>
 
   <div *ngFor="let myError of myErrors" style="margin-bottom: 5px; word-wrap: break-word">
-    <strong>Error: {{myError.errorText}}</strong>, machine id: {{myError.machineId}}
+    <strong>Error: {{myError.errorText}}</strong>, machine id: {{myError.machineId}}, datum: {{myError.localDateTime}},
+    <strong>akcija: {{myError.actionEnum}}</strong>
   </div>
 </div>

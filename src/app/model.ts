@@ -38,13 +38,15 @@ export interface Message {
 
 export interface MyError {
   errorId: number,
-  errorText: string,
+  localDateTime: string,
   machineId: number,
-  userId: number
+  userId: number,
+  actionEnum: string,
+  errorText: string
 }
 
 export interface ResponseMyErrors {
-  myErrors: MyError[]
+  errorMessages: MyError[]
 }
 
 export interface ResponseAllMachines {

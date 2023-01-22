@@ -33,7 +33,7 @@ export class MachineManagementService {
   }
 
   startMachine(machineId: number): Observable<string> {
-    return this.httpClient.put<string>(`${this.apiUrl + '/scheduleActino/' + machineId}`, {
+    return this.httpClient.put<string>(`${this.apiUrl + '/start/' + machineId}`, {
 
     },{
       headers: {'Authorization':'Bearer ' + this.configService.getToken()}
@@ -73,7 +73,6 @@ export class MachineManagementService {
   }
 
   scheduleStart(machineId: number, time: any) : Observable<string> {
-    console.log("aFAsfasfasfasasf")
     return this.httpClient.post<string>(`${this.apiUrl + '/schedule/start'}`,{
       machineId: machineId,
       timestamp: time
@@ -84,12 +83,26 @@ export class MachineManagementService {
     );
   }
 
-  scheduleRestart(machineId: number, time: any) {
-
+  scheduleRestart(machineId: number, time: any) : Observable<string> {
+    return this.httpClient.post<string>(`${this.apiUrl + '/schedule/restart'}`,{
+      machineId: machineId,
+      timestamp: time
+    }, {
+      headers: {'Authorization':'Bearer ' + this.configService.getToken()},
+    }).pipe(
+      catchError(this.handleError)
+    );
   }
 
-  scheduleStop(machineId: number, time: any) {
-
+  scheduleStop(machineId: number, time: any) : Observable<string> {
+    return this.httpClient.post<string>(`${this.apiUrl + '/schedule/stop'}`,{
+      machineId: machineId,
+      timestamp: time
+    }, {
+      headers: {'Authorization':'Bearer ' + this.configService.getToken()},
+    }).pipe(
+      catchError(this.handleError)
+    );
   }
 
   private handleError(error: HttpErrorResponse) {
